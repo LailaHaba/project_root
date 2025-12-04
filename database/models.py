@@ -15,6 +15,7 @@ class Medication:
     name: str
     dosage: Optional[str] = None
     frequency: Optional[str] = None
+    rx_cui: Optional[str] = None  # NEW
 
 @dataclass
 class Reminder:
@@ -22,6 +23,8 @@ class Reminder:
     medication_id: int
     time: str
     status: str = "pending"
+    taken_at: Optional[str] = None      # NEW
+    next_dose_at: Optional[str] = None  # NEW
 
 @dataclass
 class Interaction:

@@ -14,6 +14,7 @@ CREATE TABLE medications (
     name VARCHAR(255) NOT NULL,
     dosage VARCHAR(255),
     frequency VARCHAR(255),
+    rx_cui VARCHAR(50),  -- NEW: standard medication identifier
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
@@ -22,6 +23,8 @@ CREATE TABLE reminders (
     medication_id INT NOT NULL,
     time DATETIME NOT NULL,
     status VARCHAR(50) DEFAULT 'pending',
+    taken_at DATETIME,       -- NEW: when medication was taken
+    next_dose_at DATETIME,   -- NEW: when next dose should be taken
     FOREIGN KEY (medication_id) REFERENCES medications(id)
 );
 
